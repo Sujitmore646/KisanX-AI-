@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KisanX AI Farmer Dashboard - Monitor crops, weather, market prices and more.">
+  <title>Dashboard | KisanX AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="sidebarContainer"></div>
+<div id="profileModalContainer"></div>
+
+<div class="dashboard-wrapper">
+  <div id="topNavContainer"></div>
+  
+  <main class="main-content">
+    <div id="topNavbarInner"></div>
+
+    <div class="page-content">
+      <!-- ======= WELCOME BANNER ======= -->
+      <div class="mb-4 p-4 rounded-3 position-relative overflow-hidden" style="background:var(--gradient-primary)">
+        <div class="position-absolute" style="right:-20px;top:-20px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,0.05)"></div>
+        <div class="position-absolute" style="right:80px;bottom:-30px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <div class="d-flex align-items-center gap-3 mb-2">
+              <div style="font-size:2rem">👨‍🌾</div>
+              <div>
+                <h3 id="welcomeMsg" style="color:#FFFFFF;font-weight:800;margin-bottom:0">Welcome back, Ramesh Patil 👋</h3>
+                <p id="locationMsg" style="color:rgba(255,255,255,0.75);margin-bottom:0;font-size:0.9rem">📍 Nashik, Maharashtra</p>
+              </div>
+            </div>
+            <div class="ai-demo-badge" style="border-color:rgba(255,255,255,0.3);color:#FFFFFF;background:rgba(255,255,255,0.1)">
+              🤖 AI Demo Mode Active
+            </div>
+          </div>
+          <div class="col-lg-4 text-start text-lg-end mt-3 mt-lg-0 d-flex flex-row flex-lg-column align-items-center align-items-lg-end justify-content-between">
+            <div>
+              <div style="color:rgba(255,255,255,0.85);font-size:0.85rem">Today</div>
+              <div style="color:#FFFFFF;font-size:1.2rem;font-weight:800" id="currentDateTime"></div>
+            </div>
+            <button class="btn btn-light btn-sm rounded-pill px-3 py-1.5 mt-2 fw-bold text-danger d-inline-flex align-items-center gap-1 shadow-sm" onclick="logout()" style="font-size:0.85rem">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= STAT CARDS ======= -->
+      <div class="row g-3 mb-4">
+        <div class="col-xl-2 col-lg-4 col-md-4 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-green">🌱</div>
+            <div class="stat-label">My Crops</div>
+            <div class="stat-value" id="statCrops">0</div>
+            <div class="stat-sub">Active crops</div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-4 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-green">💰</div>
+            <div class="stat-label">Market Value</div>
+            <div class="stat-value" id="statRevenue">₹0</div>
+            <div class="stat-sub text-green">+12% this month</div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-4 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-blue">📦</div>
+            <div class="stat-label">Active Orders</div>
+            <div class="stat-value" id="statOrders">0</div>
+            <div class="stat-sub">In progress</div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-4 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-amber">📈</div>
+            <div class="stat-label">Expected Profit</div>
+            <div class="stat-value" id="statProfit">₹0</div>
+            <div class="stat-sub">This season</div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-8 col-md-8">
+          <div class="stat-card" id="weatherWidget" style="cursor:pointer" onclick="window.location.href='agri-hub.html'">
+            <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-light);margin-bottom:0.75rem">🌤 Weather - Nashik</div>
+            <div class="text-muted">Loading...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= QUICK ACTIONS ======= -->
+      <div class="kisan-card mb-4">
+        <div class="kisan-card-header">
+          <span class="kisan-card-title"><i class="bi bi-lightning-fill text-warning"></i> Quick Actions</span>
+        </div>
+        <div class="quick-action-grid">
+          <button class="quick-action-btn" onclick="window.location.href='crops.html'">
+            <div class="qa-icon">🌱</div>
+            <span data-i18n="addCrop">Add Crop</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='agri-hub.html'">
+            <div class="qa-icon">🤖</div>
+            <span data-i18n="aiAdvisor">AI Advisor</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='agri-hub.html#fertiliser'">
+            <div class="qa-icon">🧪</div>
+            <span>Fertiliser</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='agri-hub.html#disease'">
+            <div class="qa-icon">📷</div>
+            <span>Disease</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='market.html'">
+            <div class="qa-icon">💰</div>
+            <span>Market</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='buyers.html'">
+            <div class="qa-icon">🤝</div>
+            <span>Buyers</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='transport.html'">
+            <div class="qa-icon">🚚</div>
+            <span>Transport</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='assistant.html'">
+            <div class="qa-icon">💬</div>
+            <span>Ask AI</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ======= CHARTS + ACTIVITY ======= -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8">
+          <div class="kisan-card h-100">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-bar-chart-line-fill text-green"></i> Revenue Overview</span>
+              <span class="ai-demo-badge">📊 Demo Data</span>
+            </div>
+            <div style="height:240px">
+              <canvas id="dashboardChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="kisan-card h-100">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-bell-fill text-warning"></i> Activity</span>
+            </div>
+            <div id="recentActivity"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= CROPS + TOP MARKET ======= -->
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="kisan-card h-100">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-flower2 text-green"></i> My Crops</span>
+              <a href="crops.html" class="btn-kisan-outline py-1 px-3" style="font-size:0.8rem">View All</a>
+            </div>
+            <div id="topCropsWidget"></div>
+            <button class="btn-kisan-primary w-100 mt-3 justify-content-center" onclick="window.location.href='crops.html'">
+              <i class="bi bi-plus-circle"></i> Manage Crops
+            </button>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="kisan-card h-100">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-currency-rupee text-green"></i> Top Market Prices</span>
+              <a href="market.html" class="btn-kisan-outline py-1 px-3" style="font-size:0.8rem">View All</a>
+            </div>
+            <div class="d-flex flex-column gap-2">
+              <div class="price-card">
+                <div class="price-crop-icon">🍅</div>
+                <div><div class="price-crop-name">Tomato</div><div style="font-size:0.75rem;color:var(--text-light)">Nashik APMC</div></div>
+                <div class="ms-auto text-end"><div class="price-value">₹2,800</div><div class="price-change-up">↑ 8.4%</div></div>
+              </div>
+              <div class="price-card">
+                <div class="price-crop-icon">🧅</div>
+                <div><div class="price-crop-name">Onion</div><div style="font-size:0.75rem;color:var(--text-light)">Lasalgaon APMC</div></div>
+                <div class="ms-auto text-end"><div class="price-value">₹1,600</div><div class="price-change-down">↓ 11.1%</div></div>
+              </div>
+              <div class="price-card">
+                <div class="price-crop-icon">🫘</div>
+                <div><div class="price-crop-name">Soybean</div><div style="font-size:0.75rem;color:var(--text-light)">Nashik APMC</div></div>
+                <div class="ms-auto text-end"><div class="price-value">₹4,000</div><div class="price-change-up">↑ 5.3%</div></div>
+              </div>
+              <div class="price-card">
+                <div class="price-crop-icon">🌿</div>
+                <div><div class="price-crop-name">Cotton</div><div style="font-size:0.75rem;color:var(--text-light)">Nashik APMC</div></div>
+                <div class="ms-auto text-end"><div class="price-value">₹7,000</div><div class="price-change-up">↑ 2.9%</div></div>
+              </div>
+            </div>
+            <button class="btn-kisan-outline w-100 mt-3 justify-content-center" onclick="window.location.href='market.html'">
+              <i class="bi bi-graph-up-arrow"></i> Full Market Report
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="bottomNavContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/ui-builder.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+  document.getElementById('sidebarContainer').innerHTML = buildSidebar('dashboard');
+  document.getElementById('topNavbarInner').innerHTML = buildTopNavbar('Dashboard', '📍 Nashik, Maharashtra');
+  document.getElementById('profileModalContainer').innerHTML = buildProfileModal();
+  document.getElementById('bottomNavContainer').innerHTML = buildBottomNav('dashboard');
+
+  // DateTime
+  function updateDateTime() {
+    const el = document.getElementById('currentDateTime');
+    if (el) {
+      const now = new Date();
+      el.textContent = now.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    }
+  }
+  updateDateTime();
+  setInterval(updateDateTime, 60000);
+</script>
+</body>
+</html>

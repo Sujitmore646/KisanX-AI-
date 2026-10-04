@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KisanX AI - An AI-Powered Integrated Platform for Smart Farming and Direct Farm-to-Market Connectivity. From Smart Farming to Smart Selling.">
+  <meta name="keywords" content="KisanX AI, smart farming, agritech, crop advisor, market prices, farmer platform, Maharashtra">
+  <title>KisanX AI - Smart Farming to Smart Selling</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ======= NAVBAR ======= -->
+<nav class="landing-nav navbar navbar-expand-lg" id="mainNavbar">
+  <div class="container">
+    <a class="navbar-brand nav-brand" href="index.html">
+      <div class="brand-icon">🌱</div>
+      <div class="brand-name">Kisan<span>X AI</span></div>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span style="color:#FFFFFF"><i class="bi bi-list" style="font-size:1.5rem"></i></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link nav-link-item" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-item" href="agri-hub.html">AI Agri Hub</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-item" href="market.html">Market Prices</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-item" href="buyers.html">Buyers</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-item" href="transport.html">Transport</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-item" href="#about" onclick="scrollToSection('about')">About</a></li>
+      </ul>
+      <div class="d-flex gap-2 align-items-center mt-2 mt-lg-0" id="navAuthContainer">
+        <button class="nav-icon-btn dark-mode-toggle" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)" title="Toggle Dark Mode">
+          <i class="bi bi-moon-fill dark-mode-icon" style="color:#FFFFFF"></i>
+        </button>
+
+        <!-- Logged Out Buttons -->
+        <a href="#" class="btn-nav-login nav-link-item auth-logged-out" onclick="showModal('loginModal')">Login</a>
+        <a href="#" class="btn-nav-get-started auth-logged-out" onclick="showModal('loginModal')">Get Started</a>
+
+        <!-- Logged In Buttons -->
+        <a href="dashboard.html" class="btn-nav-get-started auth-logged-in d-none">
+          <i class="bi bi-speedometer2 me-1"></i> Dashboard
+        </a>
+        <button class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 auth-logged-in d-none" onclick="logout()" style="font-weight:600;font-size:0.875rem">
+          <i class="bi bi-box-arrow-right me-1"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= HERO SECTION ======= -->
+<section class="hero-section" id="home">
+  <div class="container position-relative" style="z-index:10">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-badge">
+          <div class="pulse-dot"></div>
+          🏆 AITHON 2.0 Hackathon Project
+        </div>
+        <h1 class="hero-title">
+          Smart Farming.<br>
+          <span>Better Markets.</span><br>
+          Better Future.
+        </h1>
+        <p class="hero-subtitle">
+          AI-powered farming guidance that connects farmers directly with buyers and transportation — all in one intelligent platform.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-hero-primary" onclick="showModal('loginModal')">
+            <i class="bi bi-rocket-takeoff-fill"></i> Start Farming Smarter
+          </button>
+          <button class="btn-hero-secondary" onclick="scrollToSection('features')">
+            <i class="bi bi-play-circle"></i> Explore AI Features
+          </button>
+        </div>
+        <div class="d-flex flex-wrap gap-4 mt-4">
+          <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">
+            <span style="color:var(--green-agri);font-weight:800;font-size:1.1rem">10,000+</span><br>Farmers
+          </div>
+          <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">
+            <span style="color:var(--green-agri);font-weight:800;font-size:1.1rem">₹25Cr+</span><br>Trade Volume
+          </div>
+          <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">
+            <span style="color:var(--green-agri);font-weight:800;font-size:1.1rem">500+</span><br>Verified Buyers
+          </div>
+          <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">
+            <span style="color:var(--green-agri);font-weight:800;font-size:1.1rem">98%</span><br>Satisfaction
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual position-relative p-2">
+          <div class="float-card float-card-1">
+            <i class="bi bi-graph-up-arrow" style="color:var(--green-agri)"></i>
+            Tomato ↑8.4% Today
+          </div>
+          <div class="hero-dashboard-card">
+            <div class="dashboard-header-mini">
+              <span class="dashboard-title-mini">🌱 KisanX Farm Dashboard</span>
+              <span class="live-badge">● LIVE</span>
+            </div>
+            <div class="mini-stat-row">
+              <div class="mini-stat">
+                <div class="stat-icon">🌾</div>
+                <div class="stat-val">5</div>
+                <div class="stat-label">Active Crops</div>
+              </div>
+              <div class="mini-stat">
+                <div class="stat-icon">💰</div>
+                <div class="stat-val">₹1.25L</div>
+                <div class="stat-label">Market Value</div>
+              </div>
+              <div class="mini-stat">
+                <div class="stat-icon">📦</div>
+                <div class="stat-val">3</div>
+                <div class="stat-label">Orders</div>
+              </div>
+              <div class="mini-stat">
+                <div class="stat-icon">🤝</div>
+                <div class="stat-val">6</div>
+                <div class="stat-label">Buyers</div>
+              </div>
+            </div>
+            <div style="color:rgba(255,255,255,0.6);font-size:0.7rem;margin-bottom:0.5rem">📊 Market Price Trend</div>
+            <div class="mini-chart-placeholder">
+              <div class="chart-bar" style="height:45%"></div>
+              <div class="chart-bar" style="height:60%"></div>
+              <div class="chart-bar" style="height:55%"></div>
+              <div class="chart-bar" style="height:75%"></div>
+              <div class="chart-bar" style="height:70%"></div>
+              <div class="chart-bar" style="height:85%"></div>
+              <div class="chart-bar" style="height:100%"></div>
+            </div>
+            <div class="d-flex gap-2 mt-2">
+              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:8px;padding:0.5rem;border:1px solid rgba(255,255,255,0.1)">
+                <div style="font-size:0.65rem;color:rgba(255,255,255,0.5)">🌤 Weather</div>
+                <div style="color:#FFFFFF;font-weight:700;font-size:0.85rem">28°C ⛅</div>
+              </div>
+              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:8px;padding:0.5rem;border:1px solid rgba(255,255,255,0.1)">
+                <div style="font-size:0.65rem;color:rgba(255,255,255,0.5)">🤖 AI Status</div>
+                <div style="color:var(--green-agri);font-weight:700;font-size:0.85rem">Active</div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card float-card-2">
+            <i class="bi bi-shield-check-fill" style="color:var(--green-agri)"></i>
+            Buyer Verified ✓
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= STATS BAR ======= -->
+<div class="stats-bar" style="background:rgba(20,83,45,0.95)">
+  <div class="container">
+    <div class="row text-center g-3">
+      <div class="col-6 col-md-3 stat-item">
+        <div class="stat-number">10,000+</div>
+        <div class="stat-label">Registered Farmers</div>
+      </div>
+      <div class="col-6 col-md-3 stat-item">
+        <div class="stat-number">₹25Cr+</div>
+        <div class="stat-label">Total Trade Volume</div>
+      </div>
+      <div class="col-6 col-md-3 stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Verified Buyers</div>
+      </div>
+      <div class="col-6 col-md-3 stat-item">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Districts Covered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= FEATURE CARDS ======= -->
+<section class="section-features" id="features">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-badge"><i class="bi bi-stars"></i> AI-Powered Features</span>
+      <h2 class="section-title">Everything a Farmer Needs</h2>
+      <p class="section-subtitle">From intelligent crop advice to direct market access — KisanX AI covers every step of your farming journey.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">🌱</div>
+          <div class="feature-card-title">AI Crop Advisor</div>
+          <div class="feature-card-text">Get smart crop recommendations based on soil, season, and location.</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">🧪</div>
+          <div class="feature-card-title">Fertiliser Guide</div>
+          <div class="feature-card-text">Precision fertiliser recommendations for every growth stage.</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">📷</div>
+          <div class="feature-card-title">Disease Detection</div>
+          <div class="feature-card-text">Upload leaf photos and AI detects diseases with 94%+ accuracy.</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">🌦</div>
+          <div class="feature-card-title">Weather Intelligence</div>
+          <div class="feature-card-text">7-day forecast with farm-specific weather advice.</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">💰</div>
+          <div class="feature-card-title">Market Prices</div>
+          <div class="feature-card-text">Real-time prices from all major APMCs and markets.</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-card-title">Buyer Matching</div>
+          <div class="feature-card-text">AI-matched verified buyers offering best prices near you.</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">🚚</div>
+          <div class="feature-card-title">Smart Transport</div>
+          <div class="feature-card-text">Book nearby vehicles at fair rates with GPS tracking.</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <div class="feature-card" onclick="showModal('loginModal')">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-card-title">AI Assistant</div>
+          <div class="feature-card-text">24/7 Hindi, Marathi, English farming assistant chatbot.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= WHY KISANX ======= -->
+<section class="section-why" id="about">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5">
+      <h2 style="font-size:2.5rem;font-weight:900;color:#FFFFFF">Why KisanX AI?</h2>
+      <p style="color:rgba(255,255,255,0.75);font-size:1.05rem">Empowering farmers with the tools they deserve.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="why-card">
+          <div class="why-icon">🧠</div>
+          <h4>Better Farming Decisions</h4>
+          <p>Data-driven crop, fertiliser, and irrigation recommendations tailored to your farm.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="why-card">
+          <div class="why-icon">🏪</div>
+          <h4>Direct Market Access</h4>
+          <p>Eliminate middlemen by connecting directly with verified buyers at better prices.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="why-card">
+          <div class="why-icon">💸</div>
+          <h4>Reduced Costs</h4>
+          <p>Save on transportation, fertiliser, and marketing through AI optimization.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="why-card">
+          <div class="why-icon">📈</div>
+          <h4>Improved Productivity</h4>
+          <p>AI insights help increase yield by 30% and reduce losses through timely alerts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 align-items-center">
+      <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+        <h3 style="color:#FFFFFF;font-weight:800">Ready to transform your farm?</h3>
+        <p style="color:rgba(255,255,255,0.75)">Join 10,000+ farmers in Maharashtra already using KisanX AI</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <button class="btn-hero-primary" onclick="showModal('loginModal')">
+            <i class="bi bi-person-plus"></i> Get Started Free
+          </button>
+          <button class="btn-hero-secondary" onclick="window.location.href='agri-hub.html'">
+            <i class="bi bi-eye"></i> See Demo
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="why-card text-center p-3">
+              <div style="font-size:2rem">🏆</div>
+              <div style="color:#FFFFFF;font-weight:700">AITHON 2.0</div>
+              <div style="color:rgba(255,255,255,0.65);font-size:0.8rem">Hackathon 2026</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="why-card text-center p-3">
+              <div style="font-size:2rem">🤖</div>
+              <div style="color:#FFFFFF;font-weight:700">AI Powered</div>
+              <div style="color:rgba(255,255,255,0.65);font-size:0.8rem">Gemini-Inspired</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="why-card text-center p-3">
+              <div style="font-size:2rem">🇮🇳</div>
+              <div style="color:#FFFFFF;font-weight:700">Made for India</div>
+              <div style="color:rgba(255,255,255,0.65);font-size:0.8rem">Nashik, Maharashtra</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="why-card text-center p-3">
+              <div style="font-size:2rem">🌱</div>
+              <div style="color:#FFFFFF;font-weight:700">Sustainable</div>
+              <div style="color:rgba(255,255,255,0.65);font-size:0.8rem">Smart Agriculture</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="landing-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand">Kisan<span>X AI</span> 🌱</div>
+        <p style="font-size:0.9rem;max-width:280px;margin-top:0.5rem">An AI-Powered Integrated Platform for Smart Farming and Direct Farm-to-Market Connectivity.</p>
+        <div class="d-flex gap-2 mt-3">
+          <div style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s" onmouseover="this.style.background='rgba(34,197,94,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <i class="bi bi-twitter-x" style="color:rgba(255,255,255,0.8)"></i>
+          </div>
+          <div style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s" onmouseover="this.style.background='rgba(34,197,94,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <i class="bi bi-instagram" style="color:rgba(255,255,255,0.8)"></i>
+          </div>
+          <div style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s" onmouseover="this.style.background='rgba(34,197,94,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <i class="bi bi-linkedin" style="color:rgba(255,255,255,0.8)"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="agri-hub.html">AI Agri Hub</a></li>
+          <li><a href="market.html">Market Prices</a></li>
+          <li><a href="buyers.html">Find Buyers</a></li>
+          <li><a href="transport.html">Transport</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="footer-title">Features</div>
+        <ul class="footer-links">
+          <li><a href="agri-hub.html">Crop Advisor</a></li>
+          <li><a href="agri-hub.html">Disease Detection</a></li>
+          <li><a href="agri-hub.html">Weather AI</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="assistant.html">AI Chat</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-title">AITHON 2.0 Demo Credentials</div>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.6)">Use any of these demo accounts to log in & explore:</p>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(34,197,94,0.25);border-radius:12px;padding:0.85rem;font-size:0.85rem">
+          <div style="color:var(--green-agri);font-weight:700;margin-bottom:0.35rem"><i class="bi bi-key-fill me-1"></i> Demo Login Accounts:</div>
+          <div style="color:rgba(255,255,255,0.85)"><strong style="color:#FFF">👨‍🌾 Farmer:</strong> farmer@kisanx.ai (9876543210) | <code>demo123</code></div>
+          <div style="color:rgba(255,255,255,0.85)"><strong style="color:#FFF">🏪 Buyer:</strong> buyer@kisanx.ai (9823456789) | <code>demo123</code></div>
+          <div style="color:rgba(255,255,255,0.85)"><strong style="color:#FFF">🚛 Transporter:</strong> transporter@kisanx.ai (9812345678) | <code>demo123</code></div>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div class="footer-copy">© 2026 KisanX AI. Made with 💚 for Indian Farmers | AITHON 2.0</div>
+      <div class="footer-copy">Tagline: "From Smart Farming to Smart Selling." 🌱</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ======= LOGIN MODAL ======= -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content demo-login-modal">
+      <div class="modal-header border-0 pb-0">
+        <div class="d-flex align-items-center gap-2">
+          <div class="login-modal-logo">🌱</div>
+          <div>
+            <h5 class="modal-title" style="font-weight:800;color:var(--text-dark);letter-spacing:-0.3px">Welcome to KisanX AI</h5>
+            <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:0">From Smart Farming to Smart Selling</p>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body pt-3">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label class="form-label" style="font-weight:600;font-size:0.88rem;color:var(--text-dark)">
+              <i class="bi bi-envelope-at me-1 text-success"></i> Email ID / Mobile Number
+            </label>
+            <input type="text" id="loginMobile" class="form-control-kisan form-control" placeholder="e.g. farmer@kisanx.ai or 9876543210" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight:600;font-size:0.88rem;color:var(--text-dark)">
+              <i class="bi bi-lock me-1 text-success"></i> Password
+            </label>
+            <div class="position-relative">
+              <input type="password" id="loginPassword" class="form-control-kisan form-control" placeholder="Enter password (e.g. demo123)" required>
+              <button type="button" class="btn border-0 position-absolute" style="right:8px;top:50%;transform:translateY(-50%);background:transparent;color:var(--text-light)" onclick="togglePasswordVisibility('loginPassword', this)">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label" style="font-weight:600;font-size:0.88rem;color:var(--text-dark)">
+              <i class="bi bi-person-badge me-1 text-success"></i> Account Role
+            </label>
+            <select id="loginRole" class="form-select form-control-kisan">
+              <option value="farmer">👨‍🌾 Farmer (Smart Agriculture)</option>
+              <option value="buyer">🏪 Buyer / Trader (Direct Market)</option>
+              <option value="transporter">🚛 Transporter (Logistics Hub)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-kisan-primary w-100 justify-content-center py-3 btn-login-submit" style="font-size:1rem;font-weight:700">
+            <i class="bi bi-box-arrow-in-right"></i> Login to KisanX AI
+          </button>
+        </form>
+
+        <div class="text-center mt-3">
+          <span style="font-size:0.85rem;color:var(--text-light)">New to KisanX AI? </span>
+          <a href="#" id="registerLink" style="color:var(--green-agri);font-weight:700;font-size:0.85rem">Create Account</a>
+        </div>
+
+        <!-- DEMO ACCOUNTS QUICK-FILL SECTION -->
+        <div class="mt-4 p-3 rounded-4 demo-credentials-box">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 rounded-pill" style="font-size:0.75rem; font-weight:700;">
+              <i class="bi bi-lightning-charge-fill me-1"></i> QUICK DEMO LOGIN
+            </span>
+            <small style="color:var(--text-light); font-size:0.72rem; font-weight:600">Click card for 1-click login</small>
+          </div>
+
+          <div class="row g-2 mt-1">
+            <!-- Farmer -->
+            <div class="col-12 col-md-4">
+              <div class="demo-card-item p-2 rounded-3 text-center" onclick="quickDemoLogin('farmer', 'farmer@kisanx.ai', 'demo123')" title="Click to login as Farmer">
+                <div style="font-size:1.3rem">👨‍🌾</div>
+                <div class="demo-card-role">Farmer</div>
+                <div class="demo-card-email">farmer@kisanx.ai</div>
+                <div class="demo-card-pass">Pass: <code>demo123</code></div>
+                <button type="button" class="btn btn-sm btn-demo-action btn-outline-success w-100 mt-2 py-1">
+                  ⚡ Login Farmer
+                </button>
+              </div>
+            </div>
+
+            <!-- Buyer -->
+            <div class="col-12 col-md-4">
+              <div class="demo-card-item p-2 rounded-3 text-center" onclick="quickDemoLogin('buyer', 'buyer@kisanx.ai', 'demo123')" title="Click to login as Buyer">
+                <div style="font-size:1.3rem">🏪</div>
+                <div class="demo-card-role">Buyer</div>
+                <div class="demo-card-email">buyer@kisanx.ai</div>
+                <div class="demo-card-pass">Pass: <code>demo123</code></div>
+                <button type="button" class="btn btn-sm btn-demo-action btn-outline-primary w-100 mt-2 py-1">
+                  ⚡ Login Buyer
+                </button>
+              </div>
+            </div>
+
+            <!-- Transporter -->
+            <div class="col-12 col-md-4">
+              <div class="demo-card-item p-2 rounded-3 text-center" onclick="quickDemoLogin('transporter', 'transporter@kisanx.ai', 'demo123')" title="Click to login as Transporter">
+                <div style="font-size:1.3rem">🚛</div>
+                <div class="demo-card-role">Transporter</div>
+                <div class="demo-card-email">transporter@kisanx.ai</div>
+                <div class="demo-card-pass">Pass: <code>demo123</code></div>
+                <button type="button" class="btn btn-sm btn-demo-action btn-outline-warning w-100 mt-2 py-1">
+                  ⚡ Login Logistics
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+  function togglePasswordVisibility(id, btn) {
+    const input = document.getElementById(id);
+    if (input.type === 'password') {
+      input.type = 'text';
+      btn.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    } else {
+      input.type = 'password';
+      btn.innerHTML = '<i class="bi bi-eye"></i>';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initLoginModal();
+    // Auto-redirect if already logged in
+    if (isLoggedIn()) {
+      const user = getUser();
+      if (user?.role === 'buyer') window.location.href = 'buyers.html';
+      else if (user?.role === 'transporter') window.location.href = 'transport.html';
+      else window.location.href = 'dashboard.html';
+    }
+  });
+</script>
+</body>
+</html>

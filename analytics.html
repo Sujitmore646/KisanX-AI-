@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KisanX AI Analytics - Farm performance insights, revenue charts, and market trends.">
+  <title>Analytics | KisanX AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="sidebarContainer"></div>
+<div id="profileModalContainer"></div>
+
+<div class="dashboard-wrapper">
+  <main class="main-content">
+    <div id="topNavbarInner"></div>
+    <div class="page-content">
+
+      <!-- Header -->
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+        <div>
+          <h3 style="font-weight:800;color:var(--text-dark)">📊 Farm Analytics</h3>
+          <p style="color:var(--text-light);margin:0">Performance insights for Kharif Season 2026</p>
+        </div>
+        <div class="d-flex gap-2 align-items-center">
+          <span class="ai-demo-badge">📊 Demo Data</span>
+          <div class="d-flex gap-1">
+            <button class="lang-btn active period-btn" onclick="changeChartPeriod('6m')">6M</button>
+            <button class="lang-btn period-btn" onclick="changeChartPeriod('3m')">3M</button>
+            <button class="lang-btn period-btn" onclick="changeChartPeriod('1m')">1M</button>
+          </div>
+          <button class="btn-kisan-outline py-2 px-3" onclick="exportReport()" style="font-size:0.875rem">
+            <i class="bi bi-download"></i> Export
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-3 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-green">💰</div>
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value" id="totalRevenue">₹0</div>
+            <div class="stat-change up"><i class="bi bi-arrow-up-short"></i> +18.5% vs last season</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-red">💸</div>
+            <div class="stat-label">Total Expenses</div>
+            <div class="stat-value" id="totalExpenses">₹0</div>
+            <div class="stat-change down"><i class="bi bi-arrow-up-short"></i> +8.2% vs last season</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-amber">📈</div>
+            <div class="stat-label">Net Profit</div>
+            <div class="stat-value" id="netProfit">₹0</div>
+            <div class="stat-change up"><i class="bi bi-arrow-up-short"></i> +28% profit margin</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-card">
+            <div class="stat-icon-circle stat-icon-purple">📦</div>
+            <div class="stat-label">Total Sales</div>
+            <div class="stat-value" id="totalSales">0</div>
+            <div class="stat-sub">Completed transactions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row 1 -->
+      <div class="row g-3 mb-3">
+        <div class="col-lg-8">
+          <div class="kisan-card">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-bar-chart-line-fill text-green"></i> Monthly Revenue vs Expenses</span>
+              <span class="badge-green">May - Oct 2026</span>
+            </div>
+            <div style="height:280px">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="kisan-card">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-pie-chart-fill text-warning"></i> Crop Performance</span>
+            </div>
+            <div style="height:280px">
+              <canvas id="cropPerformanceChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row 2 -->
+      <div class="row g-3">
+        <div class="col-lg-6">
+          <div class="kisan-card">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-graph-up-arrow text-green"></i> Revenue vs Expenses Trend</span>
+            </div>
+            <div style="height:250px">
+              <canvas id="expenseChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="kisan-card">
+            <div class="kisan-card-header">
+              <span class="kisan-card-title"><i class="bi bi-activity text-warning"></i> Market Price Trend</span>
+            </div>
+            <div style="height:250px">
+              <canvas id="marketTrendChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Crop Performance Table -->
+      <div class="kisan-card mt-3">
+        <div class="kisan-card-header">
+          <span class="kisan-card-title"><i class="bi bi-table"></i> Crop-wise Performance</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="kisan-table">
+            <thead>
+              <tr>
+                <th>Crop</th>
+                <th>Area</th>
+                <th>Yield</th>
+                <th>Revenue</th>
+                <th>Expense</th>
+                <th>Profit</th>
+                <th>Margin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="me-2">🍅</span> <strong>Tomato</strong></td>
+                <td>2 Acres</td>
+                <td>18 T</td>
+                <td class="text-green fw-bold">₹50,400</td>
+                <td style="color:#EF4444">₹18,000</td>
+                <td style="color:#22C55E;font-weight:700">₹32,400</td>
+                <td><span class="badge-green">64%</span></td>
+              </tr>
+              <tr>
+                <td><span class="me-2">🧅</span> <strong>Onion</strong></td>
+                <td>3 Acres</td>
+                <td>24 T</td>
+                <td class="text-green fw-bold">₹48,000</td>
+                <td style="color:#EF4444">₹22,000</td>
+                <td style="color:#22C55E;font-weight:700">₹26,000</td>
+                <td><span class="badge-green">54%</span></td>
+              </tr>
+              <tr>
+                <td><span class="me-2">🌾</span> <strong>Wheat</strong></td>
+                <td>5 Acres</td>
+                <td>15 T</td>
+                <td class="text-green fw-bold">₹37,500</td>
+                <td style="color:#EF4444">₹20,000</td>
+                <td style="color:#22C55E;font-weight:700">₹17,500</td>
+                <td><span class="badge-green">47%</span></td>
+              </tr>
+              <tr>
+                <td><span class="me-2">🫘</span> <strong>Soybean</strong></td>
+                <td>4 Acres</td>
+                <td>8 T</td>
+                <td class="text-green fw-bold">₹32,000</td>
+                <td style="color:#EF4444">₹15,000</td>
+                <td style="color:#22C55E;font-weight:700">₹17,000</td>
+                <td><span class="badge-green">53%</span></td>
+              </tr>
+              <tr>
+                <td><span class="me-2">🌿</span> <strong>Cotton</strong></td>
+                <td>6 Acres</td>
+                <td>12 T</td>
+                <td class="text-green fw-bold">₹84,000</td>
+                <td style="color:#EF4444">₹23,500</td>
+                <td style="color:#22C55E;font-weight:700">₹60,500</td>
+                <td><span class="badge-green">72%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<div id="bottomNavContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/ui-builder.js"></script>
+<script src="js/analytics.js"></script>
+<script>
+  document.getElementById('sidebarContainer').innerHTML = buildSidebar('analytics');
+  document.getElementById('topNavbarInner').innerHTML = buildTopNavbar('Analytics', '📊 Farm Performance');
+  document.getElementById('profileModalContainer').innerHTML = buildProfileModal();
+  document.getElementById('bottomNavContainer').innerHTML = buildBottomNav('analytics');
+</script>
+</body>
+</html>
