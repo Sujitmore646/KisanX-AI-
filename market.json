@@ -1,0 +1,112 @@
+{
+  "crops": [
+    {
+      "id": 1,
+      "name": "Tomato",
+      "icon": "🍅",
+      "currentPrice": 2800,
+      "previousPrice": 2582,
+      "unit": "Quintal",
+      "change": 8.4,
+      "trend": "up",
+      "bestMarket": "Nashik APMC",
+      "markets": [
+        { "name": "Nashik APMC", "price": 2800, "distance": "5 km", "trend": "up" },
+        { "name": "Pune Market", "price": 2750, "distance": "185 km", "trend": "up" },
+        { "name": "Mumbai Yard", "price": 2900, "distance": "165 km", "trend": "up" },
+        { "name": "Navi Mumbai", "price": 2650, "distance": "170 km", "trend": "stable" }
+      ],
+      "priceHistory": [2100, 2300, 2450, 2582, 2620, 2700, 2800]
+    },
+    {
+      "id": 2,
+      "name": "Onion",
+      "icon": "🧅",
+      "currentPrice": 1600,
+      "previousPrice": 1800,
+      "unit": "Quintal",
+      "change": -11.1,
+      "trend": "down",
+      "bestMarket": "Lasalgaon APMC",
+      "markets": [
+        { "name": "Lasalgaon APMC", "price": 1600, "distance": "55 km", "trend": "down" },
+        { "name": "Nashik APMC", "price": 1550, "distance": "5 km", "trend": "down" },
+        { "name": "Pune Market", "price": 1700, "distance": "185 km", "trend": "stable" },
+        { "name": "Mumbai Yard", "price": 1750, "distance": "165 km", "trend": "up" }
+      ],
+      "priceHistory": [2200, 2000, 1900, 1800, 1750, 1650, 1600]
+    },
+    {
+      "id": 3,
+      "name": "Potato",
+      "icon": "🥔",
+      "currentPrice": 1200,
+      "previousPrice": 1100,
+      "unit": "Quintal",
+      "change": 9.1,
+      "trend": "up",
+      "bestMarket": "Nashik APMC",
+      "markets": [
+        { "name": "Nashik APMC", "price": 1200, "distance": "5 km", "trend": "up" },
+        { "name": "Pune Market", "price": 1180, "distance": "185 km", "trend": "up" },
+        { "name": "Mumbai Yard", "price": 1250, "distance": "165 km", "trend": "up" },
+        { "name": "Navi Mumbai", "price": 1150, "distance": "170 km", "trend": "stable" }
+      ],
+      "priceHistory": [900, 950, 1000, 1100, 1050, 1100, 1200]
+    },
+    {
+      "id": 4,
+      "name": "Wheat",
+      "icon": "🌾",
+      "currentPrice": 2500,
+      "previousPrice": 2450,
+      "unit": "Quintal",
+      "change": 2.0,
+      "trend": "up",
+      "bestMarket": "Nashik APMC",
+      "markets": [
+        { "name": "Nashik APMC", "price": 2500, "distance": "5 km", "trend": "stable" },
+        { "name": "Pune Market", "price": 2480, "distance": "185 km", "trend": "up" },
+        { "name": "Mumbai Yard", "price": 2520, "distance": "165 km", "trend": "up" },
+        { "name": "Aurangabad", "price": 2450, "distance": "180 km", "trend": "stable" }
+      ],
+      "priceHistory": [2200, 2250, 2300, 2350, 2400, 2450, 2500]
+    },
+    {
+      "id": 5,
+      "name": "Soybean",
+      "icon": "🫘",
+      "currentPrice": 4000,
+      "previousPrice": 3800,
+      "unit": "Quintal",
+      "change": 5.3,
+      "trend": "up",
+      "bestMarket": "Nashik APMC",
+      "markets": [
+        { "name": "Nashik APMC", "price": 4000, "distance": "5 km", "trend": "up" },
+        { "name": "Pune Market", "price": 3950, "distance": "185 km", "trend": "up" },
+        { "name": "Mumbai Yard", "price": 4050, "distance": "165 km", "trend": "up" },
+        { "name": "Aurangabad", "price": 3900, "distance": "180 km", "trend": "stable" }
+      ],
+      "priceHistory": [3400, 3500, 3600, 3750, 3800, 3900, 4000]
+    },
+    {
+      "id": 6,
+      "name": "Cotton",
+      "icon": "🌿",
+      "currentPrice": 7000,
+      "previousPrice": 6800,
+      "unit": "Quintal",
+      "change": 2.9,
+      "trend": "up",
+      "bestMarket": "Nashik APMC",
+      "markets": [
+        { "name": "Nashik APMC", "price": 7000, "distance": "5 km", "trend": "up" },
+        { "name": "Pune Market", "price": 6900, "distance": "185 km", "trend": "stable" },
+        { "name": "Mumbai Yard", "price": 7100, "distance": "165 km", "trend": "up" },
+        { "name": "Aurangabad", "price": 6800, "distance": "180 km", "trend": "stable" }
+      ],
+      "priceHistory": [6200, 6300, 6500, 6600, 6700, 6800, 7000]
+    }
+  ]
+}
